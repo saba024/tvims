@@ -7,16 +7,7 @@ import scipy.stats as sts
 from statsmodels.distributions.empirical_distribution import ECDF
 import numpy as np
 
-def empiric_func(t):
-	t_without_repeat = sorted(list(set(t)))
-	t_without_repeat.insert(0, -float('Inf'))
-	size = len(t)
-	F_y = []
-	p = 0
-	for el in t_without_repeat:
-		p += t.count(el)/size
-		F_y.append(p)
-	return list(t_without_repeat), F_y
+
 
 def Fn(N, size):
 	Fn = [0]
@@ -54,14 +45,6 @@ for i in range(n):
 print(Y)
 
 sort_Y = sorted(Y)
-emp_x, emp_y = empiric_func(sort_Y)
-plt.step(emp_x, emp_y, label='Empirical distribution function', color='green')
-plt.plot([emp_x[1], emp_x[1]], [0,0] ,color='green')
-plt.plot([emp_x[-1], emp_x[-1]], [1,1] , color='green')
-plt.xlabel('x')
-plt.ylabel('F(y)')
-plt.legend()
-plt.show()
 
 
 
